@@ -5,6 +5,12 @@ const getBooks = (db) => {
     .select('*')
 }
 
+const addBook = (db, book) => {
+  return db('books')
+  .insert(book)
+}
+
 module.exports = {
-  getBooks
+  getBooks,
+  addBook
 }
