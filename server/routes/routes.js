@@ -43,4 +43,19 @@ router.delete('/:id', (req, res) => {
     })
 })
 
+// async/await version
+// router.delete('/:id', async(req, res) => {
+//   const db = req.app.get('db')
+//   const bookId = req.params.id
+//   try {
+//     let deletedBook = null
+//     const book = await booksDb.getBook(db, bookId)
+//     const numBooksDeleted = await booksDb.deleteBook(db, bookId)
+//     res.json(deletedBook)
+//   } catch (err) {
+//     res.status(500).json(err.message)
+//   }
+// })
+
+
 module.exports = router
