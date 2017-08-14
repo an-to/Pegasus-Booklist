@@ -7,7 +7,7 @@ import Search from './Search'
 import BooksFound from './BooksFound'
 import { getBooks } from '../actions/books'
 
-class App extends React.Component {
+export class App extends React.Component {
   componentDidMount() {
   }
 
