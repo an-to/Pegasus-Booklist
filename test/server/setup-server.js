@@ -1,12 +1,21 @@
 import knex from 'knex'
-import config from '../../knexfile'
+import configs from '../../knexfile'
 
 export default (test, createServer) => {
   test.beforeEach(t => {
-    console.log('beforeeach')
+    t.context.db = knex(configs.test)
+    createServer && (t.context.app = createServer(t.context.db))
+    return t.context.db.migrate.latest()
+      .then(() => {
+        // from knexjs website, return a promise for this to be asynchronous
+        return t.context.db.seed.run()
+      })
   })
 
   test.afterEach(t => {
-    console.log('aftereach')
+    return t.context.db.migrate.rollback() // free memory?
+      .then(() => {
+        return t.context.db.destroy() //disconnect
+      })
   })
 }
