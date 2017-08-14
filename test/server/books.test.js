@@ -2,7 +2,7 @@ import 'babel-polyfill' // required for async/await
 import test from 'ava'
 import request from 'supertest'
 import createServer from '../../server/server'
-import setup from './setup-server'
+import setup from './helpers/setup-server'
 import bookDb from '../../server/db/books'
 
 

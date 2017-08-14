@@ -1,5 +1,5 @@
 import knex from 'knex'
-import configs from '../../knexfile'
+import configs from '../../../knexfile'
 
 export default (test, createServer) => {
   test.beforeEach(t => {
