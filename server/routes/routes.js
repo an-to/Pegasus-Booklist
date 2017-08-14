@@ -26,4 +26,21 @@ router.post('/', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res) => {
+  const db = req.app.get('db')
+  const bookId = req.params.id
+  let deletedBook = null
+  booksDb.getBook(db, bookId)
+    .then((book) => {
+      deletedBook = book
+      return booksDb.deleteBook(db, bookId)
+    })
+    .then((result) => {
+      res.json(deletedBook)
+    })
+    .catch((err) => {
+      res.status(500).json(err.message)
+    })
+})
+
 module.exports = router

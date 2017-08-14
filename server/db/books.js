@@ -7,10 +7,20 @@ const getBooks = (db) => {
 
 const addBook = (db, book) => {
   return db('books')
-  .insert(book)
+    .insert(book)
+}
+
+const getBook = (db, id) => {
+  return db('books').where('id', id)
+}
+
+const deleteBook = (db, id) => {
+  return getBook(db, id).del()
 }
 
 module.exports = {
   getBooks,
-  addBook
+  addBook,
+  getBook,
+  deleteBook,
 }
