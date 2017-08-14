@@ -1,6 +1,6 @@
 // Update with your config settings.
 
-module.exports = {
+export default {
 
   development: {
     client: 'sqlite3',
@@ -29,5 +29,4 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-
-};
+}

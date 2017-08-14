@@ -17,6 +17,10 @@ server.use('/api/greetings', greetings)
 server.use('/api/books', routes)
 
 module.exports = function(db) {
+  console.log('module.exports')
   server.set('db', db)
   return server
 }
+
+
+export default module.exports
