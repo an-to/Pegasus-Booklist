@@ -4,7 +4,7 @@ import {shallow, mount} from 'enzyme'
 
 import {App} from '../../client/components/App'
 
-test.only('app has contains 1 hashrouter', t => {
+test('app has contains 1 hashrouter', t => {
   const wrapper = shallow(<App />)
   t.is(wrapper.find('HashRouter').length, 1)
 })

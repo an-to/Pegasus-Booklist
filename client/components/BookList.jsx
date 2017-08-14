@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Book from './Book'
 
-function Books({books}) {
+export function Books({books}) {
   return (
     <div className='booklist'>
       {books.map((book, k) => {
