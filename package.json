@@ -32,8 +32,9 @@
   "devDependencies": {
     "ava": "^0.19.1",
     "babel-polyfill": "^6.23.0",
-    "enzyme": "^2.8.2",
+    "enzyme": "^2.9.1",
     "nodemon": "^1.11.0",
+    "react-test-renderer": "^15.6.1",
     "sqlite3": "^3.1.8",
     "supertest": "^3.0.0"
   },
@@ -55,9 +56,8 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.1",
-    "react-test-renderer": "^15.5.4",
     "superagent": "^2.2.0",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
