@@ -3,6 +3,7 @@ import test from 'ava'
 import request from 'supertest'
 import createServer from '../../server/server'
 import setup from './setup-server'
+import bookDb from '../../server/db/books'
 
 
 setup(test, createServer)
@@ -13,7 +14,7 @@ test('get /api/books get all books', async t => {
 
   t.is(res.status, 200)
   const numBooks = res.body.length
-  t.deepEqual(numBooks, 6)
+  t.is(numBooks, 6)
 })
 
 test('post /api/books add a new book', async t => {
@@ -29,4 +30,7 @@ test('post /api/books add a new book', async t => {
 
   t.is(res.status, 200)
   t.deepEqual(res.body, nb)
+
+  const books = await bookDb.getBooks(t.context.db)
+  t.is(books.length, 7)
 })
