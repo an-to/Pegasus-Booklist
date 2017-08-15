@@ -18,10 +18,10 @@ export const doSearch = (books, keywords, dispatch) => {
     return isFound && book
   })
 
-  dispatch(setSearchResult(searchResult))
+  dispatch(updateSearchResult(searchResult))
 }
 
-export const setSearchResult = (foundBooks) => {
+export const updateSearchResult = (foundBooks) => {
   return {
     type: UPDATE_SEARCHRESULT,
     foundBooks

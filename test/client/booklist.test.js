@@ -10,7 +10,7 @@ import {
   Books
 } from '../../client/components/BookList'
 
-function getData() {
+function getTestData() {
   return {
     books: [{
         id: 2,
@@ -35,7 +35,7 @@ function getData() {
 }
 
 test('books rendered', t => {
-  const props = getData()
+  const props = getTestData()
   const wrapper = shallow(Books(props))
   t.is(wrapper.find('.booklist').length, 1)
   t.is(wrapper.find('Book').length, 2)
