@@ -2,6 +2,7 @@ import React from 'react'
 
 import test from 'ava'
 import {
+  shallow,
   mount
 } from 'enzyme'
 import 'jsdom-global/register'
@@ -30,5 +31,6 @@ test('books rendered', t => {
     ]
   }
 
-  const wrapper = mount(Books(props))
+  const wrapper = shallow(Books(props))
+  t.is(wrapper.find('Book').length, 2)
 })
