@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import {Provider, connect} from 'react-redux'
 
 import test from 'ava'
 import 'jsdom-global/register'
@@ -9,8 +9,9 @@ import {
 } from 'enzyme'
 import {createMockStore} from 'redux-test-utils'
 
-import ConnectedComponent from '../../client/components/Search'
-import {updateSearchResult} from '../../client/actions/searchResult'
+import ConnectedSearchComponent from '../../client/components/Search'
+import {doSearch} from '../../client/actions/searchResult'
+import {UPDATE_SEARCHRESULT} from '../../client/actions/index'
 
 function getTestData() {
   return {
@@ -36,9 +37,21 @@ function getTestData() {
   }
 }
 
-test('search component rendered', t => {
+test('search component rendered, props matches store state', t => {
   const state = getTestData()
-  const wrapper = shallow(<ConnectedComponent store={createMockStore(state)} />)
+  const wrapper = shallow(<ConnectedSearchComponent store={createMockStore(state)} />)
   t.is(wrapper.length, 1)
   t.is(wrapper.props().books, state.books)   
+})
+
+test('doSearch dispatch UPDATE_SEARCHRESULT action', t => {
+  const state = getTestData()
+  const store = createMockStore(state)
+  const wrapper = mount(<Provider store={store}><ConnectedSearchComponent /></Provider> )
+
+  doSearch(state.books, ['Fifty'], store.dispatch)
+  
+  let actions = store.getActions()
+  t.is(actions[0].type, UPDATE_SEARCHRESULT)
+  t.is(actions[0].foundBooks[0], state.books[1])
 })
