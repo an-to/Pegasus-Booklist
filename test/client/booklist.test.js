@@ -6,10 +6,12 @@ import {
   mount
 } from 'enzyme'
 import 'jsdom-global/register'
-import {Books} from '../../client/components/BookList'
+import {
+  Books
+} from '../../client/components/BookList'
 
-test('books rendered', t => {
-  const props = {
+function getData() {
+  return {
     books: [{
         id: 2,
         title: "Every Day is for the Thief",
@@ -30,7 +32,11 @@ test('books rendered', t => {
       }
     ]
   }
+}
 
+test('books rendered', t => {
+  const props = getData()
   const wrapper = shallow(Books(props))
+  t.is(wrapper.find('.booklist').length, 1)
   t.is(wrapper.find('Book').length, 2)
 })
